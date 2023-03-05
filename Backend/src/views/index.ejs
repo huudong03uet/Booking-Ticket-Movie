@@ -1,0 +1,118 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/upload">Upload file</a>
+ 
+    </div>
+
+    <div>
+        <h2>List actor</h2>
+    </div>
+    <div>
+        <div class="w3-container">
+            
+            <h2>List users table</h2>
+            <table class="w3-table-all w3-hoverable">
+                <thread>
+                    <tr class="w3-light-grey">
+                        <th>User_id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                    </tr>
+                    <tbody>
+                        <% for(let i=0; i < dataUser.length; i++){ %>
+                            <tr>
+                                <td>
+                                    <%=dataUser[i].user_id%>
+                                </td>
+                                <td>
+                                    <%=dataUser[i].name%>
+                                </td>
+                                <td>
+                                    <%=dataUser[i].email%>
+                                </td>
+                                <td>
+                                    <%=dataUser[i].phone%>
+                                </td>
+                                <td>
+                                    <%=dataUser[i].age%>
+                                </td>
+                                <td>
+                                    <%=dataUser[i].gender%>
+                                </td>
+                                <td>
+                                    <button type="button">Detail</button>
+                                    <form action="/edit-user/<%=dataUser[i].user_id%>" method="GET">
+                                        <button type="submit">Edit</button>
+                                    </form>
+                                    
+                                    <form action="/delete-user" method="POST">
+                                        <input type="text" hidden name="userId" value="<%=dataUser[i].user_id%>" />
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+
+                </thread>
+            </table>
+
+
+        </div>
+        <div class="create-user-container">
+            <form action="/create-new-user" method="POST">
+                <div><b>
+                        create-user-container
+                    </b>
+                </div>
+                <div>
+
+                    <div> <label>name:</label>
+                        <input type="text" name="name" />
+                    </div>
+                    <div> <label>email:</label>
+                        <input type="email" name="email" />
+                    </div>
+                    <div><label>phone:</label>
+                        <input type="text" name="phone" />
+                    </div>
+
+                    <div><label>age:</label>
+                        <input type="text" name="age" />
+                    </div>
+                </div>
+                <div></div><label>gender:</label>
+                <input type="text" name="gender" />
+        </div>
+        <div>
+            <button type="submit" class="btn-submit">Submit</button>
+        </div>
+    </div>
+    </form>
+    </div>
+
+    </div>
+    </div>
+    <!-- <%=dataUser%> -->
+
+
+
+</body>
+
+</html>

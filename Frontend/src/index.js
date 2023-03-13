@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './views/App/App';
-import reportWebVitals from './reportWebVitals';
+import "../src/index.scss";
+import App from "../src/components/App/App";
 import { createStore, applyMiddleware, compose } from "redux"
-import { Provider } from 'react-redux'
-import rootReducer from './reducers/rootReducers';
+import { Provider } from "react-redux";
+import * as serviceWorker from './serviceWorker';
+import rootReducer from "./reducers/rootReducers";
 import thunk from 'redux-thunk';
+require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+require('./styles/_reset.scss');
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 ReactDOM.render(
@@ -14,7 +17,7 @@ ReactDOM.render(
     </Provider>,
  document.getElementById('root'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

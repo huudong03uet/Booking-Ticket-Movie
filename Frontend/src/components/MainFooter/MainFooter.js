@@ -24,15 +24,15 @@ export default class MainFooter extends Component {
 
                     <div className="main-footer-top-item">
                         <h3 className="main-footer-top-item__title">Sponsored By:</h3>
-                        <p><a href="cybersoft.edu.vn" target="_blank" rel="noopener noreferrer">{svg.plane} cybersoft.edu.vn</a></p>
+                        <p><a href="https://uet.vnu.edu.vn/" target="_blank" rel="noopener noreferrer">{svg.plane} https://uet.vnu.edu.vn/</a></p>
                     </div>
 
                     <div className="main-footer-top-item">
                         <h3 className="main-footer-top-item__title">Phone Number:</h3>
-                        <p> {svg.phone} 985-551-3866</p>
+                        <p> {svg.phone} 0123456789</p>
                     </div>
 
-                    <p className="main-footer-top-copyright">Copyright &copy;2019<br /> Coded and designed by  <a className="glitch glitch1" data-text="Phúc Hoàng Phạm"href="https://www.facebook.com/dioxittdn.phucprobb" target="_blank" rel="noopener noreferrer"> {svg.hacker}  Phúc Hoàng Phạm</a></p>
+                    <p className="main-footer-top-copyright">Copyright &copy;2023<br /> Coded and designed by  <a className="glitch glitch1" data-text="Sinh viên UET"href="https://uet.vnu.edu.vn/" target="_blank" rel="noopener noreferrer"> {svg.hacker}  Sinh viên UET</a></p>
 
                 </section>
                 <section className="main-footer-middle">

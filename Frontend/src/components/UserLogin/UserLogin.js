@@ -16,22 +16,24 @@ class UserLogin extends Component {
       displayName: null
     }
   }
-  
+ 
 
-  authenticate = provider => {
-    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
-    firebaseConfig
-      .auth()
-      .signInWithPopup(authProvider)
-      .then(this.authHandler);
-  };
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.authHandler(user)
-      }
-    });
-  }
+  // authenticate = provider => {
+  //   const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+  //   firebaseConfig
+  //     .auth()
+  //     .signInWithPopup(authProvider)
+  //     .then(this.authHandler);
+  // };
+
+  
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     if (user) {
+  //       this.authHandler(user)
+  //     }
+  //   });
+  // }
   authHandler = async authData => {                                                              
     const user = await authData.user;
     if (user !== null) {
@@ -55,6 +57,33 @@ class UserLogin extends Component {
       this.props.history.push({ pathname: '/profile', state: { isLogin: this.state.isLogin, photo: this.state.photo, displayName: this.state.displayName } })
     }
   };
+// click login has data default
+  clickLogin = () => {
+    localStorage.setItem('displayName', 'Guest')
+    localStorage.setItem('photo', 'https://firebasestorage.googleapis.com/v0/b/filmcloud-1.appspot.com/o/avt.png?alt=media&token=8b8b5b0f-8b5f-4b1f-9b1f-8b5f4b1f9b1f')
+    localStorage.setItem('uid', 'guest')
+    this.setState({
+      isLogin: true,
+    })
+
+    if(this.state.isLogin === true){
+      const db = firebase.firestore();
+      db.settings({
+        timestampsInSnapshots: true
+      });
+      db.collection("user").doc('guest').set(
+        {}
+      )
+      this.props.toggleLogInStatus({ status: 'APPROVE' })
+      this.props.history.push({ pathname: '/profile', state: { isLogin: this.state.isLogin, photo: this.state.photo, displayName: this.state.displayName } }) 
+
+    }
+
+    
+  }
+
+
+
 
 
   render() {
@@ -71,8 +100,8 @@ class UserLogin extends Component {
 
           <div className="user-log-in-container-content">
             <a href="#">
-
-              <button onClick={() => { this.authenticate("Facebook") }} className="user-log-in-container-content__button"  >Log In</button>
+                 {/* <button onClick={() => { this.authenticate("Facebook") }} className="user-log-in-container-content__button">Log In</button> */}
+             <button onClick={this.clickLogin} className="user-log-in-container-content__button">Log In</button>
             </a>
           </div>
 

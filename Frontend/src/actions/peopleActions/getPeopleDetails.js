@@ -6,6 +6,7 @@ const savePeopleDetails = payload => ({
 });
 
 const getPeopleDetails = url => {
+  
   return dispatch => {
     fetch(url)
     .then(res => res.json())

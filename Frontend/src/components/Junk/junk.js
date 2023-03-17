@@ -1,5 +1,5 @@
-<a href="#"><button className={`theme-btn fadeInLeft ${this.props.navStatus ? 'ticket-none' : ''}`} data-toggle="modal" data-target="#modalTicket" href="#"><i className="icofont icofont-ticket"></i>Tickets</button></a>
-    <TicketModal />
+{/* <a href="#"><button className={`theme-btn fadeInLeft ${this.props.navStatus ? 'ticket-none' : ''}`} data-toggle="modal" data-target="#modalTicket" href="#"><i className="icofont icofont-ticket"></i>Tickets</button></a>
+    <TicketModal /> */}
               import React, { Component } from 'react'
 import "../DetailMovies/DetailMovies.scss";
 import { NavLink } from 'react-router-dom';

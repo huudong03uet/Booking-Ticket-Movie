@@ -11,7 +11,6 @@ const getNowPlaying = () => {
                 dispatch(saveNowPlaying(result.data))
             })
             .catch(err => {
-                
                 console.log(err)
             })
     }

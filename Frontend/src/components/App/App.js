@@ -32,9 +32,6 @@ function App(props) {
           <Redirect from="*" to="/404" />
         </Switch>
       </BrowserRouter>
-      {/* <Home/> */}
-      {/* <UserLogin/> */}
-      {/* <UserProfile/> */}
     </div>
   );
 }

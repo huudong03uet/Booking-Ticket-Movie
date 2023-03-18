@@ -11,13 +11,16 @@ export default class MainFooter extends Component {
                 <section className="main-footer-top">
 
                     <header className="main-footer-top-header">
-                        <img className="main-footer-top-header__title wow fadeInLeft" data-wow-delay=".5s" data-wow-duration="1.2s" src="http://www.demo.gloriathemes.com/wp/themovie/wp-content/themes/themovie/assets/img/logo-alternative.png" />
+                        <img className="main-footer-top-header__title wow fadeInLeft" data-wow-delay=".5s" data-wow-duration="1.2s" src="https://www.bhdstar.vn/wp-content/uploads/2020/02/dathongbao-1.png" />
                         <nav className="main-footer-top-header-nav">
-                            <a className="wow fadeInLeft" data-wow-delay=".7s" data-wow-duration="1.2s" to="/">Home</a>
-                            <a className="wow fadeInLeft" data-wow-delay=".9s" data-wow-duration="1.2s" to="/log-in">Profile</a>
+
+                            {/* TODO */}
+                            {/* Add link direction */}
+                            <a className="wow fadeInLeft" data-wow-delay="0.7s" data-wow-duration="1.2s" to="/">Home</a>
+                            <a className="wow fadeInLeft" data-wow-delay="0.9s" data-wow-duration="1.2s" to="/log-in">Profile</a>
                             <a className="wow fadeInLeft" data-wow-delay="1.1s" data-wow-duration="1.2s" to="/discover">Discover</a>
-                            <a className="wow fadeInLeft" data-wow-delay="1.1s" data-wow-duration="1.2s" href="https://www.termsfeed.com/terms-conditions/03b187ec0a7e3e1daf949a9c83615051" to="/discover">FAQ</a>
-                            <a className="wow fadeInLeft" data-wow-delay="1.1s" data-wow-duration="1.2s" href="https://www.termsfeed.com/privacy-policy/19ee9e5044a2da9d21da854d0de4f914" to="">Privacy</a>
+                            <a className="wow fadeInLeft" data-wow-delay="1.1s" data-wow-duration="1.2s" to="/discover">FAQ</a>
+                            <a className="wow fadeInLeft" data-wow-delay="1.1s" data-wow-duration="1.2s" to="">Privacy</a>
                             <a className="wow fadeInLeft" data-wow-delay="1.1s" data-wow-duration="1.2s" to="/discover">Brand</a>
                         </nav>
                     </header>
@@ -41,13 +44,13 @@ export default class MainFooter extends Component {
                             <p className="title-1">{svg.globe} Partner</p>
                             <div className="row col-sm-12 col-xs-12 linePartner">
                                 <a target="_blank" href="http://bhdstar.vn" title="BHD">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/bhd.png" />
+                                    <img className="iconConnect" src="https://www.bhdstar.vn/wp-content/themes/bhd/assets/images/logo.png" />
                                 </a>
                                 <a target="_blank" href="http://galaxycine.vn" title="Galaxy">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/galaxycine.png" />
+                                    <img className="iconConnect" src="https://www.galaxycine.vn/website/images/galaxy-logo-mobile.png" />
                                 </a>
                                 <a target="_blank" href="http://cinestar.com.vn" title="Cinestar">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/cinestar.png" />
+                                    <img className="iconConnect" src="https://cinestar.com.vn/pictures/400x400.png" />
                                 </a>
                                 <a target="_blank" href="http://lottecinemavn.com" title="Lotte Cinema">
                                     <img
@@ -57,65 +60,58 @@ export default class MainFooter extends Component {
                                     />
                                 </a>
                                 <a target="_blank" href="https://www.megagscinemas.vn" title="MegaGS">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/megags.png" />
+                                    <img className="iconConnect" src="https://megags.vn/wp-content/uploads/2020/10/logo-Mega.png" />
                                 </a>
                             </div>
                             <div className="row col-sm-12 col-xs-12 linePartner">
                                 <a target="_blank" href="https://www.betacineplex.vn/" title="Beta">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/bt.jpg" />
+                                    <img className="iconConnect" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/fwndbploqbcenyvl5cuo" />
                                 </a>
                                 <a target="_blank" href="https://touchcinema.com/" title="Touch Cinema">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/dongdacinema.png" />
+                                    <img className="iconConnect" src="https://play-lh.googleusercontent.com/tCp2JSGYI8gczn8fBjXaQeF0mmLx-dDUwfnRzAS9XJJqsjjGiMla05p-bzRl1e_6ZxE1" />
                                 </a>
                                 <a target="_blank" href="https://cinemaxvn.com/" title="Cinemax">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/TOUCH.png" />
+                                    <img className="iconConnect" src="http://theme.hstatic.net/1000296517/1000449871/14/share_fb_home.png?v=6350" />
                                 </a>
                                 <a target="_blank" href="http://starlight.vn/" title="Starlight">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/cnx.jpg" />
+                                    <img className="iconConnect" src="https://thumbs.dreamstime.com/b/star-light-circle-shape-sun-solar-logo-icon-vector-template-196448047.jpg" />
                                 </a>
                                 <a target="_blank" href="http://ddcinema.vn" title="DDC">
-                                    <img
-                                        className="iconConnect"
-                                        src="https://123phim.vn/app/assets/img/icons/STARLIGHT.png"
-                                    />
+                                    <img className="iconConnect" src="https://i.imgur.com/6J9tili.jpg"/>
                                 </a>
                             </div>
                             <div className="row col-sm-12 col-xs-12 linePartner">
                                 <a target="_blank" href="https://momo.vn" title="MoMo">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/momo.png" />
+                                    <img className="iconConnect" src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Circle.png" />
                                 </a>
                                 <a target="_blank" href="https://zalopay.vn/" title="ZaloPay">
                                     <img
                                         className="iconConnect"
-                                        src="https://123phim.vn/app/assets/img/icons/zalopay_icon.png"
+                                        src="https://websitecukcukvn.misacdn.net/wp-content/uploads/2023/01/ZaloPay-logo.png"
                                     />
                                 </a>
-                                <a target="_blank" href="https://www.payoo.vn/" title="Payoo">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/payoo.jpg" />
+                                <a target="_blank" href="https://www.vpbank.com.vn/ca-nhan" title="VPBank">
+                                    <img className="iconConnect" src="https://logoart.vn/blog/wp-content/uploads/2011/08/thiet-ke-lo-go-sao-kim-15.png" />
                                 </a>
-                                <a
-                                    target="_blank"
-                                    href="https://www.vietcombank.com.vn/"
-                                    title="Vietcombank"
-                                >
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/VCB.png" />
+                                <a target="_blank" href="https://www.vietcombank.com.vn/" title="Vietcombank">
+                                    <img className="iconConnect" src="https://admin.tamlyvietphap.vn/uploaded/Images/Original/2020/10/16/logo_vietcombank_1610091313.jpg" />
                                 </a>
                                 <a target="_blank" href="http://www.agribank.com.vn/" title="Agribank">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/AGRIBANK.png" />
+                                    <img className="iconConnect" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Agribank-V.png" />
                                 </a>
                             </div>
                             <div className="row col-sm-12 col-xs-12 linePartner">
-                                <a target="_blank" href="https://www.vietinbank.vn/" title="Vietinbank">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/VIETTINBANK.png" />
+                                <a target="_blank" href="https://www.mbbank.com.vn/" title="MB">
+                                    <img className="iconConnect" src="https://www.mbageas.life/uploads/aXjFfoqjIT5-TPtlotxHr/1598866205281_original.png" />
                                 </a>
-                                <a target="_blank" href="https://www.indovinabank.com.vn/" title="IVB">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/IVB.png" />
+                                <a target="_blank" href="https://viettelpost.com.vn/" title="ViettelPost">
+                                    <img className="iconConnect" src="https://boxme.asia/wp-content/uploads/2021/09/Viettel.png" />
                                 </a>
-                                <a target="_blank" href="http://123go.vn" title="123Go">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/123go.png" />
+                                <a target="_blank" href="https://www.bidv.com.vn/n" title="BIDV">
+                                    <img className="iconConnect" src="https://i.pinimg.com/736x/4f/db/d9/4fdbd949c782f4170e65779ab9ac09d6.jpg" />
                                 </a>
-                                <a target="_blank" href="http://laban.vn" title="La Bàn">
-                                    <img className="iconConnect" src="https://123phim.vn/app/assets/img/icons/laban.png" />
+                                <a target="_blank" href="https://techcombank.com/" title="Techcombank">
+                                    <img className="iconConnect" src="https://scontent.iocvnpt.com/resources/portal//Images/LCI/Import/636574099328965740_1508123430791atm-tcb.png" />
                                 </a>
                             </div>
                             <div className="row col-sm-12 col-xs-12"></div>

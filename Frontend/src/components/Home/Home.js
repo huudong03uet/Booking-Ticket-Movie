@@ -7,16 +7,9 @@ import ItemController from '../ItemController/ItemController';
 import MainContent from '../MainContent/MainContent';
 import MainFooter from '../MainFooter/MainFooter';
 import Hotline from '../Hotline/Hotline';
-import News from '../News/News';
-import TicketItem from "../TicketItem/TicketItem"
-import Gallery from '../Gallery/Gallery';
-import GalleryItem from '../Gallery/GalleryItem';
-import Toggle from "../Toggle/Toggle"
 import CardGallery from '../CardGallery/CardGallery';
-import GalleryContainer from '../Gallery/GalleryContainer';
 import TicketContainer from '../TicketItem/TicketContainer';
 import CardSlider from '../CardSlider/CardSlider';
-import BoxAbout from '../BoxAbout/BoxAbout';
 var Snow = require('react-snow-effect');
 const HrLine = () => (
 
@@ -61,8 +54,6 @@ export default class Home extends Component {
                     <TicketContainer renderItem={this.state.renderItem} />
                     <CardGallery renderGallery={this.state.renderGallery} renderItem={this.state.renderItem} />
                     <CardSlider renderItem={this.state.renderItem} />
-                    <Toggle renderGallery={this.state.renderGallery} handleGallery={this.handleGallery} />
-                    <BoxAbout renderGallery={this.state.renderGallery} />
                     <MainFooter />
                     <Hotline />
                 </div>

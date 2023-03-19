@@ -1,10 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import '../CardGallery/CardGallery.scss'
-import $ from "jquery"
 import * as action2 from "../../actions/movieActions/getUpcoming";
 import * as action4 from "../../actions/movieActions/getNowPlaying";
-import ViewTrailer from "../TicketItem/ViewTrailer"
-import ButtonTrailer from "../TicketItem/ButtonTrailer"
 import postMovieGenres from '../../actions/movieActions/postMovieGenres';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'

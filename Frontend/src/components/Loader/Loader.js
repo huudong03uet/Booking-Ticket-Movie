@@ -7,12 +7,12 @@ class Loader extends Component {
   componentDidMount() {
     setTimeout(async () => {
 
-      document.querySelector('.loader-container').style.transition = 'opacity 5s';
+      document.querySelector('.loader-container').style.transition = 'opacity 3s';
       document.querySelector('.loader-container').style.opacity = '0';
 
       setTimeout(async () => {
         document.querySelector('.loader-container').remove();
-      }, 2000);
+      }, 1000);
 
     }, 100);
   }

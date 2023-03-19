@@ -34,7 +34,7 @@ class MainNav extends Component {
           <Link to="/">
             <img
               className="main-nav-top-section__image fadeInLeft"
-              src="http://www.demo.gloriathemes.com/wp/themovie/wp-content/themes/themovie/assets/img/logo-alternative.png"
+              src="https://www.trendingnetnepal.com/wp-content/uploads/2020/07/0-2.jpg"
               alt="logo"
             />
           </Link>
@@ -43,7 +43,7 @@ class MainNav extends Component {
               onChange={this.handleSearchInput}
               className="main-nav-search-form__input"
               type="text"
-              placeholder="search..."
+              placeholder="Search..."
             />
             <Link to={`/search-results/${this.state.searchValue}`}>
               <button className="main-nav-search-form__button" type="submit">

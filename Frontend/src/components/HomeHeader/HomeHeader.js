@@ -71,10 +71,8 @@ class HomeHeader extends Component {
         })
     }
     render() {
-        // let {carousel} = this.props
         return (
             <Fragment>
-                {/* <Carousel touch={true}> */}
                 <section id="rt-showcase-surround">
                     <div id="rt-showcase" className="slider-container rt-overlay-dark">
                         <div className="rt-container slider-container">

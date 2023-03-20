@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 configureViewEngine(app);
-initWebRoutes(app);
+//initWebRoutes(app);
 
 initAPIRoute(app);
 

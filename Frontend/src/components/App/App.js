@@ -1,9 +1,9 @@
 import React from 'react';
-import Home from '../Home/Home';
-import UserLogin from '../UserLogin/UserLogin';
+// import Home from '../Home/Home';
+// import UserLogin from '../UserLogin/UserLogin';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import UserProfile from '../UserProfile/UserProfile';
-import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
+// import UserProfile from '../UserProfile/UserProfile';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { routesHome } from "../../routes";
 import { connect } from 'react-redux';
 import ScrollToTop from 'react-scroll-up'

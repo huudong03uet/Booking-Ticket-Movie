@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../../node_modules/react-multi-carousel/lib/styles.css";
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as action from "../../actions/movieActions/getGenres"
 
 import * as action4 from "../../actions/movieActions/getNowPlaying";
@@ -33,7 +33,7 @@ class TicketItem extends Component {
           <figure className="album">
             <div className="prs_upcom_movie_box_wrapper">
               <div className="prs_upcom_movie_img_box">
-                <img src={` http://image.tmdb.org/t/p/w185//${item.poster_path}`} style={{ height: "303px" }} />
+                <img alt='prs_error' src={` http://image.tmdb.org/t/p/w185//${item.poster_path}`} style={{ height: "303px" }} />
                 <div className="prs_upcom_movie_img_overlay" />
                 <div className="prs_upcom_movie_img_btn_wrapper">
                   <ul>

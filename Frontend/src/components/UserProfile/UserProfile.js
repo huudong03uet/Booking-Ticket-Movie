@@ -5,20 +5,13 @@ import "../UserProfile/UserProfile.scss";
 import "../UserLogin/UserLogin.scss";
 import UserItem from '../UserProfile/UserItem'
 import { connect } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom';
-import Carousel from "react-multi-carousel";
 import "../../../node_modules/react-multi-carousel/lib/styles.css"
 import toggleLogInStatus from '../../actions/authenticationActions/toggleLogInStatus';
 import getUserDetails from '../../actions/authenticationActions/getUserDetails';
 import firebase from 'firebase'
-import firebaseConfig from "../../firestore"
 import Tickets from './Tickets';
 import UserLogin from "../UserLogin/UserLogin"
 class UserProfile extends Component {
-
-
-
-
     logout = async () => {
         await firebase.auth().signOut();
         this.props.history.push('/')
@@ -29,7 +22,6 @@ class UserProfile extends Component {
         if (localStorage.getItem('uid') !== null) {
             let displayName = localStorage.getItem('displayName')
             let photo = localStorage.getItem('photo')
-            let uid = localStorage.getItem('uid')
             return (
                 < div className="user-profile" >
                     <MainNav />

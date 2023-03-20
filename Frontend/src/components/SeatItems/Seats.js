@@ -29,9 +29,9 @@ export default class Seats extends Component {
         }
     }
     handleOn = () => {
-        const objViTri = {
-            ghe: this.state.ghe
-        }
+        // const objViTri = {
+        //     ghe: this.state.ghe
+        // }
         if (this.state.on === false) {
             this.props.viTri.push(this.state.ghe)
             console.log("you click " + this.props.alpha + this.props.item);

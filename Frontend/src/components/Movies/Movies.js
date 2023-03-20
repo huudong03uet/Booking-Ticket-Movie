@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Carousel from "react-multi-carousel";
 import "../../../node_modules/react-multi-carousel/lib/styles.css";
-import { NavLink, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import * as action from "../../actions/movieActions/getGenres"
 import { connect } from 'react-redux'
 const star = <svg class="swiper-slide-rating__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"></path></svg>
@@ -13,7 +13,7 @@ class Movies extends Component {
         return this.props.items && this.props.items.map((item, index) => {
             return (
                 <div className="main-content-container-item">
-                    <Link to={`/details/movie/${item.id}`}><img src={` http://image.tmdb.org/t/p/w185//${item.poster_path}`} style={{ width: "127px", height: "190px" }} /> </Link>
+                    <Link to={`/details/movie/${item.id}`}><img alt='image error' src={` http://image.tmdb.org/t/p/w185//${item.poster_path}`} style={{ width: "127px", height: "190px" }} /> </Link>
                     <h3 className="main-content-container-item__item-title">{item.original_title}</h3>
                     <p className="main-content-container-item__genres">{this.handleGenres(item.genre_ids)}</p>
                     <p className="main-content-container-item__rating">{star} {item.vote_average} </p>

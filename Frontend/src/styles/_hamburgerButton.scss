@@ -54,7 +54,9 @@ $hamburger-types: (
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: $hamburger-layer-height / -2;
+   margin-top: $hamburger-layer-height / -2;
+  // fix for Dart Sass
+ // margin-top: calc(#{$hamburger-layer-height} / -2);
 
   &,
   &::before,
@@ -90,7 +92,10 @@ $hamburger-types: (
    */
   .hamburger--elastic {
     .hamburger-inner {
-      top: $hamburger-layer-height / 2;
+       top: $hamburger-layer-height / 2;
+      // fix for Sass Dart
+      // top: calc(#{$hamburger-layer-height} / 2);
+
       transition-duration: 0.275s;
       transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 

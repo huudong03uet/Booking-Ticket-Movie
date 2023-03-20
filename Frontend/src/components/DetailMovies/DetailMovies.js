@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import "../DetailMovies/DetailMovies.scss";
-import { Link, NavLink } from 'react-router-dom';
-import Movies from '../Movies/Movies.js';
+import {  NavLink } from 'react-router-dom';
 import PeopleCarousel from '../PeopleCarousel/PeopleCarousel';
 import Trailers from '../Trailers/Trailers';
 import * as action from "../../actions/movieActions/getDetails"

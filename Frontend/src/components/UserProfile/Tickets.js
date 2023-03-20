@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react'
 import firebase from 'firebase'
-import firebaseConfig from "../../firestore"
 export default class Tickets extends Component {
     constructor(props) {
         super(props);

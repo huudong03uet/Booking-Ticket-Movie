@@ -5,8 +5,7 @@ import * as action2 from "../../actions/ticketActions/getMovies";
 import '../Stuff/css/style.min.css'
 import '../Stuff/css/responsive.min.css'
 import '../Stuff/Stuff.scss'
-import TicketBox from '../TicketBox/TicketBox';
-import { Modal } from 'react-bootstrap';
+
 import Example from '../Modal/Modal';
 import Time from './Time';
 const arrDate = [1, 2, 3, 4, 5]
@@ -19,24 +18,6 @@ class ScheduleDetails extends Component {
         return date.getHours() + ':' + date.getMinutes()
 
     }
-    // renderNav = () => {
-
-    //     var today = new Date();
-    //     const formatter = new Intl.DateTimeFormat('en', { month: 'long' });
-    //     const month = formatter.format(new Date());
-
-    //     return arrDate && arrDate.map((item, index) => {
-    //         var date = `${month}` + ' ' + `${today.getDate() + index}` + ', ' + today.getFullYear();
-    //         if (index === 0)
-    //             return (
-    //                 <a href="http://demo.aa-team.com/tf/omb/schedule/?date=1575763200" className="btn btn-default omb-secondary">{date}</a>
-    //             )
-    //         else
-    //             return (
-    //                 <a href="http://demo.aa-team.com/tf/omb/schedule/?date=1575763200" className="btn btn-default omb-primary">{date}</a>
-    //             )
-    //     })
-    // }
     renderTimes = id => {
         let today = new Date();
         const formatter = new Intl.DateTimeFormat('en', { month: 'long' });

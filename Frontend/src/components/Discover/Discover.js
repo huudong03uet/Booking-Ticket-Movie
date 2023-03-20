@@ -85,7 +85,7 @@ class Discover extends Component {
           this.props.discover.results.length > 0 ? this.props.discover.results.map(item => (
             <Link key={item.id} to={`/details/movie/${item.id}`}>
               <div className="discover-main-item">
-                <img className="discover-main-item__image" src={`http://image.tmdb.org/t/p/w185//${item.poster_path}`} />
+                <img className="discover-main-item__image" alt='image_discover' src={`http://image.tmdb.org/t/p/w185//${item.poster_path}`} />
                 <h3 className="discover-main-item__title">{item.name ? item.name : item.title}</h3>
                 <p className="discover-main-item-rating">
                   <svg className="discover-main-item-rating__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"/></svg>

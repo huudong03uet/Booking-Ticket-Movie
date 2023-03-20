@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import userReducer from "../reducers/userReducers";
+// import userReducer from "../reducers/userReducers";
 import toggleNav from "../reducers/toggleNav";
 import movieReducer from "../reducers/movieReducer/movieReducer";
 import getUpcoming from "../reducers/movieReducer/getUpcoming";

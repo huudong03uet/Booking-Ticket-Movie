@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Seats from './Seats';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+// import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 export default class SeatItems extends Component {
 
   

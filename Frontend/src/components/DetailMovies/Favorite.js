@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import firestore from "../../firestore"
+// import firestore from "../../firestore"
 import firebase from 'firebase'
 import ReactNotification from 'react-notifications-component'
 import { store } from 'react-notifications-component';
@@ -44,14 +44,13 @@ export default class Favorite extends Component {
         });
     }
     handlePostFirebase = async (data) => {
-        let uid = localStorage.getItem('uid')
-        let id
+        // let uid = localStorage.getItem('uid')
         const db = await firebase.firestore();
         db.settings({
             timestampsInSnapshots: true
         });
         // console.log(db.collection("user").doc(uid).collection("favorite").doc(`${this.props.details.id}`))
-        const docRef = await db.collection("user").doc(uid).collection("favorite").doc(`${this.props.details.id}`).set(data)
+        // const docRef = await db.collection("user").doc(uid).collection("favorite").doc(`${this.props.details.id}`).set(data)
         // {
         //     this.setState({
         //         id: await docRef.id

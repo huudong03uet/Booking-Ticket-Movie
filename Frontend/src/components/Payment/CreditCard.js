@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Cards from 'react-credit-cards';
 import "react-credit-cards/lib/styles.scss"
 import '../Payment/CreditCard.scss'
-import firestore from "../../firestore"
 import firebase from 'firebase'
 import { withRouter } from 'react-router-dom'
 import {
@@ -61,33 +60,33 @@ class CreditCard extends Component {
 
   }
   handlePostFirebase = async (data) => {
-    let uid = localStorage.getItem('uid')
+    // let uid = localStorage.getItem('uid')
     const db = await firebase.firestore();
     db.settings({
       timestampsInSnapshots: true
     });
-    const userRef = db.collection("user").doc(uid).collection("payment").add({
-      data
-    })
-      .then(docRef => {
-        this.props.history.push({
-          pathname: `/details/movie/${this.props.itemDetails.id}/payment/${docRef.id}`,
-          state: {
-            itemDetails: this.props.itemDetails, count: this.props.count, tenPhim: this.props.tenPhim,
-            ngayChieu: this.props.ngayChieu,
-            gioChieu: this.props.gioChieu,
-            tenrap: this.props.tenrap,
-            listGhe: this.props.listGhe,
-            type: this.props.type,
-            sum: this.props.sum,
-            id: docRef.id.slice(1, 10)
-          }
-        })
-      });
+    // const userRef = db.collection("user").doc(uid).collection("payment").add({
+    //   data
+    // })
+    //   .then(docRef => {
+    //     this.props.history.push({
+    //       pathname: `/details/movie/${this.props.itemDetails.id}/payment/${docRef.id}`,
+    //       state: {
+    //         itemDetails: this.props.itemDetails, count: this.props.count, tenPhim: this.props.tenPhim,
+    //         ngayChieu: this.props.ngayChieu,
+    //         gioChieu: this.props.gioChieu,
+    //         tenrap: this.props.tenrap,
+    //         listGhe: this.props.listGhe,
+    //         type: this.props.type,
+    //         sum: this.props.sum,
+    //         id: docRef.id.slice(1, 10)
+    //       }
+    //     })
+    //   });
   }
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { issuer } = this.state;
+    // const { issuer } = this.state;
     const formData = await this.reduceData(e);
     this.setState({ formData: formData });
     const dataToAdd = {

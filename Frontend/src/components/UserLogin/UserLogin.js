@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import '../UserLogin/UserLogin.scss';
-import { connect, Provider } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import firebase from 'firebase'
-import firebaseConfig from "../../firestore"
 
 import toggleLogInStatus from '../../actions/authenticationActions/toggleLogInStatus';
 class UserLogin extends Component {

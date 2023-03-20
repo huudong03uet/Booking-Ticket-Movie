@@ -1,8 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import PaymentHeader from '../PaymentDetails/PayementDetails'
-import firestore from "../../firestore"
-import firebase from 'firebase'
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import { store } from 'react-notifications-component';

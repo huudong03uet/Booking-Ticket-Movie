@@ -1,14 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import $ from 'jquery'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import '../CardSlider/CardSlider.scss'
 import * as action2 from "../../actions/movieActions/getUpcoming";
 import * as action4 from "../../actions/movieActions/getNowPlaying";
-import ViewTrailer from "../TicketItem/ViewTrailer"
-import ButtonTrailer from "../TicketItem/ButtonTrailer"
-import postMovieGenres from '../../actions/movieActions/postMovieGenres';
+//import postMovieGenres from '../../actions/movieActions/postMovieGenres';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 const HrLine = () => (
@@ -29,6 +26,7 @@ class CardSlider extends Component {
             mode: 'vertical',
             maxSlides: 15,
             slideWidth: 257,
+          //  slideWidth: 500,
             slideMargin: 17,
             ticker: true,
             tickerHover: true,
@@ -42,7 +40,8 @@ class CardSlider extends Component {
             mode: 'vertical',
             autoDirection: 'prev',
             maxSlides: 15,
-            slideWidth: 257,
+           slideWidth: 257,
+         
             slideMargin: 17,
             ticker: true,
             tickerHover: true,
@@ -61,7 +60,7 @@ class CardSlider extends Component {
                     <li className="album-slider__item prs1_vp_hover_overlay" style={{ float: 'none', listStyle: 'none', position: 'relative', width: 175, marginBottom: 17 }}>
                         <figure className="album">
                             <div className="prs1_vp_img_overlay">
-                                <img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} alt="vp_img" />
+                                <img src={`${item.backdrop_path}`} alt="vp_img" />
                                 <Link to={`/details/movie/${item.id}`} className="venobox info vbox-item" data-title="PORTFOLIO TITTLE" data-gall="gall12">
                                     <i className="fa fa-search" />
                                 </Link>
@@ -75,7 +74,7 @@ class CardSlider extends Component {
                     <li className="album-slider__item prs1_vp_hover_overlay" style={{ float: 'none', listStyle: 'none', position: 'relative', width: 175, marginBottom: 17 }}>
                         <figure className="album">
                             <div className="prs1_vp_img_overlay">
-                                <img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} alt="vp_img" />
+                                <img src={`${item.backdrop_path}`} alt="vp_img" />
                                 <Link to={`/details/movie/${item.id}`} className="venobox info vbox-item" data-title="PORTFOLIO TITTLE" data-gall="gall12">
                                     <i className="fa fa-search" />
                                 </Link>
@@ -93,7 +92,7 @@ class CardSlider extends Component {
                     <li className="album-slider__item prs1_vp_hover_overlay bx-clone" style={{ float: 'none', listStyle: 'none', position: 'relative', width: 175, marginBottom: 17 }}>
                         <figure className="album">
                             <div className="prs1_vp_img_overlay">
-                                <img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} alt="vp_img" />
+                                <img src={`${item.backdrop_path}`} alt="vp_img" />
                                 <Link to={`/details/movie/${item.id}`} className="venobox info vbox-item" data-title="PORTFOLIO TITTLE" data-gall="gall12">
                                     <i className="fa fa-search" />
                                 </Link>
@@ -107,7 +106,7 @@ class CardSlider extends Component {
                     <li className="album-slider__item prs1_vp_hover_overlay bx-clone" style={{ float: 'none', listStyle: 'none', position: 'relative', width: 175, marginBottom: 17 }}>
                         <figure className="album">
                             <div className="prs1_vp_img_overlay">
-                                <img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} alt="vp_img" />
+                                <img src={`${item.backdrop_path}`} alt="vp_img" />
                                 <Link to={`/details/movie/${item.id}`} className="venobox info vbox-item" data-title="PORTFOLIO TITTLE" data-gall="gall12">
                                     <i className="fa fa-search" />
                                 </Link>
@@ -158,7 +157,7 @@ class CardSlider extends Component {
                                 return (
                                     <div className="owl-item" style={{ width: 784, marginRight: 20 }}><div className="item">
                                         <div className="prs1_vp_center_slider_img_wrapper">
-                                            <img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} alt="vp_img" />
+                                            <img src={`${item.backdrop_path}`} alt="vp_img" />
                                             <Link to={`details/movie/${item.id}`} className="venobox info vbox-item" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i className="fa fa-search" /></Link>
                                         </div>
                                     </div></div>
@@ -180,11 +179,6 @@ class CardSlider extends Component {
                         <HrLine />
                         <div className="container">
                             <div className="row">
-                                {/* <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div className="prs1_heading_section_wrapper">
-                                <h2>Video &amp; photos</h2>
-                            </div>
-                        </div> */}
                                 <div className="prs1_vp_main_slider_wrapper">
                                     <div className="prs1_vp_left_slidebar_wrapper">
                                         <div className="wrap-album-slider">
@@ -235,10 +229,10 @@ class CardSlider extends Component {
 }
 const mapStateToProps = state => {
     return {
-        genres: state.getGenres.result.genres,
-        upcoming: state.getUpcoming.result.results,
-        nowPlaying: state.getNowPlaying.result.results,
-        movieGenres: state.postMovieGenres,
+        // genres: state.getGenres.result.genres,
+        upcoming: state.getUpcoming.result.data,
+        nowPlaying: state.getNowPlaying.result.data,
+        // movieGenres: state.postMovieGenres,
 
     }
 }
@@ -250,7 +244,7 @@ const mapDispatchToProps = dispatch => {
         onSaveNowPlaying: () => {
             dispatch(action4.getNowPlaying())
         },
-        postMovieGenres: url => dispatch(postMovieGenres(url))
+        // postMovieGenres: url => dispatch(postMovieGenres(url))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CardSlider)

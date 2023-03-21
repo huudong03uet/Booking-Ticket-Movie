@@ -25,6 +25,17 @@ class TicketItem extends Component {
     // this.props.onSaveGenres()
     this.props.onSaveNowPlaying()
   }
+
+  getDayMonthYear = (date) => {
+    // date format: 2023-02-16T17:00:00.000Z
+    let day = date.slice(8, 10);
+    let month = date.slice(5, 7);
+    let year = date.slice(0, 4);
+    return `${day}/${month}/${year}`;
+  }
+
+
+
   renderItem = () => {
     console.log("hello", this.props.nowPlaying)
     return this.props.nowPlaying && this.props.nowPlaying.map((item, index) => {
@@ -38,7 +49,7 @@ class TicketItem extends Component {
                 <div className="prs_upcom_movie_img_btn_wrapper">
                   <ul>
                     <li>
-                      <ViewTrailer tenphim={item.title} id={item.film_id} />
+                      <ViewTrailer tenphim={item.name} id={item.film_id} />
                     </li>
                     <li><Link to={`/details/movie/${item.film_id}`}>View Details</Link>
                     </li>
@@ -47,13 +58,15 @@ class TicketItem extends Component {
               </div>
               <div className="prs_upcom_movie_content_box">
                 <div className="prs_upcom_movie_content_box_inner">
-                  <h3 style={{ color: "black" }} className="main-content-container-item__item-title">{item.title}</h3>
+                  <h3 style={{ color: "black" }} className="main-content-container-item__item-title">{item.name}</h3>
                   <p style={{ color: "white" }} className="main-content-container-item__rating">{star} {item.rate} </p>
                   {/* <p style={{ color: "black" }}>{this.handleGenres(item.genre_ids.map((item2, index) => { if (index < 2) return item2 }))}</p> */}
                   {/* print genres text */}
                   <p style={{ color: "black" }}>{item.genres}</p>
-                  <p style={{ color: "black" }}>{item.release_date}</p>
-                  <p style={{ color: "black" }}>{item.popularity}<i className="fa fa-star" /></p>
+                  <p style={{ color: "black" }}>{this.getDayMonthYear(item.release_date)}</p>
+                
+
+                  <p style={{ color: "black" }}>{item.rate}<i className="fa fa-star" /></p>
                 </div>
                 <div className="prs_upcom_movie_content_box_inner_icon">
                   <ul>
@@ -63,7 +76,7 @@ class TicketItem extends Component {
                 </div>
               </div>
             </div>
-            <div class="prs_webseri_video_sec_icon_wrapper "><ul><li><ButtonTrailer tenphim={item.title} id={item.film_id} /></li></ul></div>
+            <div class="prs_webseri_video_sec_icon_wrapper "><ul><li><ButtonTrailer tenphim={item.name} id={item.film_id} /></li></ul></div>
           </figure>
         </li>
       )
@@ -97,7 +110,6 @@ class TicketItem extends Component {
         {this.props.renderItem === true ? (
           <Fragment>
             <h2 style={{ textAlign: "center", marginLeft: "20px", marginTop: "30px" }} data-text={"SPECIAL FEATURING"} class="main-content-container__title glitch ">{"SPECIAL FEATURING"}</h2>
-            <p style = {{textAlign:"center", fontSize: "8px"}}>Just click showing nearby and click movies again if you dont see carousel</p>
             <HrLine />
             <Carousel
               additionalTransfrom={0}

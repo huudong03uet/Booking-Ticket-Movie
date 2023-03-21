@@ -22,18 +22,6 @@ class CardGallery extends Component {
         )
     }
 
-    handleGetGenre = genreId => {
-        let mainGenre;
-        if (this.props.movieGenres.genres) {
-            this.props.movieGenres.genres.forEach(genre => {
-                if (genre.id === genreId[0]) {
-                    mainGenre = genre.name;
-                }
-            });
-        }
-
-        return mainGenre;
-    }
     renderThumb = () => {
         return this.props.nowPlaying && this.props.nowPlaying.map((item, index) => {
             if (index >= 0 && index < 4) {
@@ -42,7 +30,7 @@ class CardGallery extends Component {
                         <span className="cs1_point" />
                         <span className="cs1_thumb">
                             <img
-                                src={`https://image.tmdb.org/t/p/w92/${item.poster_path}`}
+                                src={`${item.poster_path}`}
                                 alt="Scooter"
                                 title="Scooter"
                             />
@@ -57,8 +45,8 @@ class CardGallery extends Component {
             if (index >= 0 && index < 4) {
                 return (
                     <label className={`num${index}`}>
-                        <span className="cs1_title"><span className="cs1_wrapper">{item.title}</span></span>
-                        <br /><span className="cs1_descr"><span className="cs1_wrapper">{this.handleGetGenre(item.genre_ids)}</span></span>
+                        <span className="cs1_title"><span className="cs1_wrapper">{item.name}</span></span>
+                        <br /><span className="cs1_descr"><span className="cs1_wrapper">{item.genres}</span></span>
                     </label>
                 )
             }
@@ -68,7 +56,7 @@ class CardGallery extends Component {
         return this.props.nowPlaying && this.props.nowPlaying.map((item, index) => {
             if (index >= 0 && index < 4) {
                 return (
-                    <li className={`num${index} img slide`}><Link to={`/details/movie/${item.id}`}><img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} style={{ width: '100%', height: '100%' }} /></Link></li>
+                    <li className={`num${index} img slide`}><Link to={`/details/movie/${item.id}`}><img src={`${item.backdrop_path}`} style={{ width: '100%', height: '100%' }} /></Link></li>
                 )
             }
         })
@@ -133,8 +121,8 @@ class CardGallery extends Component {
 const mapStateToProps = state => {
     return {
         genres: state.getGenres.result.genres,
-        upcoming: state.getUpcoming.result.results,
-        nowPlaying: state.getNowPlaying.result.results,
+        upcoming: state.getUpcoming.result.data,
+        nowPlaying: state.getNowPlaying.result.data,
         movieGenres: state.postMovieGenres,
 
     }

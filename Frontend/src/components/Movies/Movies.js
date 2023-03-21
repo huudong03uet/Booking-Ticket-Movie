@@ -14,9 +14,9 @@ class Movies extends Component {
             return (
                 <div className="main-content-container-item">
                     <Link to={`/details/movie/${item.id}`}><img alt='image error' src={`${item.poster}`} style={{ width: "127px", height: "190px" }} /> </Link>
-                    <h3 className="main-content-container-item__item-title">{item.title}</h3>
+                    <h3 className="main-content-container-item__item-title">{item.name}</h3>
                     <p className="main-content-container-item__genres">{this.handleGenres(item.genres)}</p>
-                    <p className="main-content-container-item__rating">{star} {item.vote} </p>
+                    <p className="main-content-container-item__rating">{star} {item.rate} </p>
                 </div>
             )
         })

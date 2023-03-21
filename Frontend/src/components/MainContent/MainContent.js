@@ -83,9 +83,9 @@ class MainContent extends Component {
 const mapStateToProps = state => {
     return {
         nowPlaying: state.getNowPlaying.result.data,
-        popular: state.getPopular.result.results,
-        upcoming: state.getUpcoming.result.results,
-        topRated: state.getTopRated.result.results
+        popular: state.getPopular.result.data,
+        upcoming: state.getUpcoming.result.data,
+        topRated: state.getTopRated.result.data
     }
 }
 const mapDispatchToProps = dispatch => {

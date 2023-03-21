@@ -33,7 +33,7 @@ class HomeHeader extends Component {
         return this.props.carousel && this.props.carousel.map((item, index) => {
             if (index >= 0 && index < 3) {
                 return (
-                    <li className={`num${index} img slide`}><img src={`${item.poster}`} style={{ width: '100%', height: '86%' }} /></li>
+                    <li className={`num${index} img slide`}><img src={`${item.backdrop_path}`} style={{ width: '100%', height: '86%' }} /></li>
                 )
             }
         })
@@ -63,7 +63,7 @@ class HomeHeader extends Component {
                 return (
                     <label className={`num${index}`}>
                         <span className="cs_title">
-                            <span className="cs_wrapper">{item.title}</span>
+                            <span className="cs_wrapper">{item.name}</span>
                         </span>
                         <br />
                         <span className="cs_descr">

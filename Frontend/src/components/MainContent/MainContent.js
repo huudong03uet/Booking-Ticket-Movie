@@ -56,7 +56,7 @@ class MainContent extends Component {
                     <Fragment>
                         <Title data={"Upcoming"} className="glitch" title={"Upcoming"} />
                         <Carousel items={this.props.nowPlaying} />
-                        {/* <TicketItem items={this.props.nowPlaying}/> */}
+                     
                         <HrLine />
                         <Title data={"Popular"} title={"Popular"} />
                         <Carousel items={this.props.topRated} />
@@ -82,7 +82,7 @@ class MainContent extends Component {
 }
 const mapStateToProps = state => {
     return {
-        nowPlaying: state.getNowPlaying.result.results,
+        nowPlaying: state.getNowPlaying.result.data,
         popular: state.getPopular.result.results,
         upcoming: state.getUpcoming.result.results,
         topRated: state.getTopRated.result.results

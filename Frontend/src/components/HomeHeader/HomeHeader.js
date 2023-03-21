@@ -12,23 +12,28 @@ class HomeHeader extends Component {
         this.props.postMovieGenres("https://api.themoviedb.org/3/genre/movie/list?api_key=f4718f386ee605decefebc673ce3bc9c&language=en-US")
     }
 
-    handleGetGenre = genreId => {
-        let mainGenre;
-        if (this.props.movieGenres.genres) {
-            this.props.movieGenres.genres.forEach(genre => {
-                if (genre.id === genreId[0]) {
-                    mainGenre = genre.name;
-                }
-            });
-        }
+    handleGetGenre = genres => {
+        // let mainGenre;
+        // if (this.props.movieGenres.genres) {
+        //     this.props.movieGenres.genres.forEach(genre => {
+        //         if (genre.id === genreId[0]) {
+        //             mainGenre = genre.name;
+        //         }
+        //     });
+        // }
 
-        return mainGenre;
+        // return mainGenre;
+        // get genres from carousel.props.genres (text, string)
+        // return genres
+
+
+        return genres
     }
     renderItem = () => {
         return this.props.carousel && this.props.carousel.map((item, index) => {
             if (index >= 0 && index < 3) {
                 return (
-                    <li className={`num${index} img slide`}><img src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`} style={{ width: '100%', height: '86%' }} /></li>
+                    <li className={`num${index} img slide`}><img src={`${item.poster}`} style={{ width: '100%', height: '86%' }} /></li>
                 )
             }
         })
@@ -41,7 +46,7 @@ class HomeHeader extends Component {
                         <span className="cs_point" />
                         <span className="cs_thumb">
                             <img
-                                src={`https://image.tmdb.org/t/p/w92/${item.poster_path}`}
+                                src={`${item.poster}`}
                                 alt="Scooter"
                                 title="Scooter"
                             />
@@ -52,6 +57,7 @@ class HomeHeader extends Component {
         })
     }
     renderDes = () => {
+        
         return this.props.carousel && this.props.carousel.map((item, index) => {
             if (index >= 0 && index < 3) {
                 return (
@@ -61,9 +67,9 @@ class HomeHeader extends Component {
                         </span>
                         <br />
                         <span className="cs_descr">
-                            <span className="cs_wrapper">RATING: {item.vote_average}</span>
-                            <div className="cs_wrapper">BUDGET: {item.popularity}</div>
-                            <div className="cs_wrapper">{this.handleGetGenre(item.genre_ids)}</div>
+                            <span className="cs_wrapper">Rating: {item.rate}</span>
+                            <div className="cs_wrapper">Popularity: {item.popularity}</div>
+                            {/* <div className="cs_wrapper">{this.handleGetGenre(item.genres)}</div> */}
                         </span>
                     </label>
                 )
@@ -187,8 +193,9 @@ class HomeHeader extends Component {
     }
 }
 const mapStateToProps = state => {
+ 
     return {
-        carousel: state.getNowPlaying.result.results,
+        carousel: state.getNowPlaying.result.data,
         movieGenres: state.postMovieGenres,
     }
 }

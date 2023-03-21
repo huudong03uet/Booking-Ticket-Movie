@@ -22,25 +22,25 @@ const HrLine = () => (
 const star = <svg class="swiper-slide-rating__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"></path></svg>
 class TicketItem extends Component {
   componentDidMount() {
-    this.props.onSaveGenres()
+    // this.props.onSaveGenres()
     this.props.onSaveNowPlaying()
   }
   renderItem = () => {
-
+    console.log("hello", this.props.nowPlaying)
     return this.props.nowPlaying && this.props.nowPlaying.map((item, index) => {
       return (
         <li className="album-slider__item" style={{ float: 'left', listStyle: 'none', position: 'relative', marginRight: "17px" }}>
           <figure className="album">
             <div className="prs_upcom_movie_box_wrapper">
               <div className="prs_upcom_movie_img_box">
-                <img alt='prs_error' src={` http://image.tmdb.org/t/p/w185//${item.poster_path}`} style={{ height: "303px" }} />
+                <img alt='prs_error' src={`${item.poster}`} style={{ height: "303px" }} />
                 <div className="prs_upcom_movie_img_overlay" />
                 <div className="prs_upcom_movie_img_btn_wrapper">
                   <ul>
                     <li>
-                      <ViewTrailer tenphim={item.title} id={item.id} />
+                      <ViewTrailer tenphim={item.title} id={item.film_id} />
                     </li>
-                    <li><Link to={`/details/movie/${item.id}`}>View Details</Link>
+                    <li><Link to={`/details/movie/${item.film_id}`}>View Details</Link>
                     </li>
                   </ul>
                 </div>
@@ -48,20 +48,22 @@ class TicketItem extends Component {
               <div className="prs_upcom_movie_content_box">
                 <div className="prs_upcom_movie_content_box_inner">
                   <h3 style={{ color: "black" }} className="main-content-container-item__item-title">{item.title}</h3>
-                  <p style={{ color: "white" }} className="main-content-container-item__rating">{star} {item.vote_average} </p>
-                  <p style={{ color: "black" }}>{this.handleGenres(item.genre_ids.map((item2, index) => { if (index < 2) return item2 }))}</p>
+                  <p style={{ color: "white" }} className="main-content-container-item__rating">{star} {item.rate} </p>
+                  {/* <p style={{ color: "black" }}>{this.handleGenres(item.genre_ids.map((item2, index) => { if (index < 2) return item2 }))}</p> */}
+                  {/* print genres text */}
+                  <p style={{ color: "black" }}>{item.genres}</p>
                   <p style={{ color: "black" }}>{item.release_date}</p>
                   <p style={{ color: "black" }}>{item.popularity}<i className="fa fa-star" /></p>
                 </div>
                 <div className="prs_upcom_movie_content_box_inner_icon">
                   <ul>
-                    <li><Link to={`/details/movie/${item.id}`}><i class="icofont icofont-ticket"></i></Link>
+                    <li><Link to={`/details/movie/${item.film_id}`}><i class="icofont icofont-ticket"></i></Link>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="prs_webseri_video_sec_icon_wrapper "><ul><li><ButtonTrailer tenphim={item.title} id={item.id} /></li></ul></div>
+            <div class="prs_webseri_video_sec_icon_wrapper "><ul><li><ButtonTrailer tenphim={item.title} id={item.film_id} /></li></ul></div>
           </figure>
         </li>
       )
@@ -166,16 +168,16 @@ class TicketItem extends Component {
 }
 const mapStateToProps = state => {
   return {
-    genres: state.getGenres.result.genres,
-    nowPlaying: state.getNowPlaying.result.results,
+    // genres: state.getGenres.result.genres,
+    nowPlaying: state.getNowPlaying.result.data,
 
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    onSaveGenres: () => {
-      dispatch(action.getGenresAPI())
-    },
+    // onSaveGenres: () => {
+    //   dispatch(action.getGenresAPI())
+    // },
     onSaveNowPlaying: () => {
       dispatch(action4.getNowPlaying())
     },

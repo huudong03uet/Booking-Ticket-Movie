@@ -7,17 +7,15 @@ class News extends Component {
     componentDidMount() {
         this.props.postMovieGenres("https://api.themoviedb.org/3/genre/movie/list?api_key=f4718f386ee605decefebc673ce3bc9c&language=en-US")
     }
-    handleGetGenre = genreId => {
-        let mainGenre;
-        if (this.props.movieGenres.genres) {
-            this.props.movieGenres.genres.forEach(genre => {
-                if (genre.id === genreId[0]) {
-                    mainGenre = genre.name;
-                }
-            });
-        }
+    handleGetGenre = genres => {
 
+        let mainGenre;
+        if (genres) {
+            mainGenre = genres.split(",")[0];
+        }
+        console.log(mainGenre);
         return mainGenre;
+        
     }
     renderCarouselNews = () => {
         return this.props.items && this.props.items.map((item, index) => {
@@ -30,22 +28,22 @@ class News extends Component {
 
                                 <div className="ratio_left-cover-1 image-wrapper">
                                     <Link to={`/details/movie/${item.id}`}>
-                                        <img className="img-fluid w-100" img src={` http://image.tmdb.org/t/p/w1280//${item.poster_path}`} style={{
+                                        <img className="img-fluid w-100" img src={`${item.poster}`} style={{
                                             background: `linear-gradient(
                 rgba(0, 0, 0, 0.6),
                 rgba(0, 0, 0, 0.6)
-              ) center center no-repeat, #fff url(https://image.tmdb.org/t/p/w1280/${item.poster_path}) center top no-repeat`, backgroundSize: 'cover, cover'
+              ) center center no-repeat, #fff url(${item.poster}) center top no-repeat`, backgroundSize: 'cover, cover'
                                         }} />
                                     </Link>
                                 </div>
                                 <div className="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow carousel-things">
 
                                     <Link to={`/details/movie/${item.id}`} className="textdec">
-                                        <h2 className="h3 post-title text-white my-1">{item.original_title}</h2>
+                                        <h2 className="h3 post-title text-white my-1">{item.title}</h2>
                                     </Link>
 
                                     <div className="news-meta">
-                                        <span className="news-author"> <Link to className="text-white font-weight-bold" href="../category/author.html">{item.vote_average} | {this.handleGetGenre(item.genre_ids)}</Link></span>
+                                        <span className="news-author"> <Link to className="text-white font-weight-bold" href="../category/author.html">{item.vote} | {this.handleGetGenre(item.genres)}</Link></span>
                                     </div>
                                 </div>
                             </div>
@@ -59,20 +57,20 @@ class News extends Component {
                             <div className="position-relative">
                                 <div className="ratio_left-cover-1 image-wrapper">
                                     <Link to={`/details/movie/${item.id}`}>
-                                        <img className="img-fluid w-100" src={` http://image.tmdb.org/t/p/w1280//${item.poster_path}`} style={{
+                                        <img className="img-fluid w-100" src={`${item.poster}`} style={{
                                             background: `linear-gradient(
                 rgba(0, 0, 0, 0.6),
                 rgba(0, 0, 0, 0.6)
-              ) center center no-repeat, #fff url(https://image.tmdb.org/t/p/w1280/${item.poster_path}) center top no-repeat`, backgroundSize: 'cover, cover'
+              ) center center no-repeat, #fff url(${item.poster}) center top no-repeat`, backgroundSize: 'cover, cover'
                                         }} />
                                     </Link>
                                 </div>
                                 <div className="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                     <Link to={`/details/movie/${item.id}`}>
-                                        <h2 className="h3 post-title text-white my-1">{item.original_title}</h2>
+                                        <h2 className="h3 post-title text-white my-1">{item.title}</h2>
                                     </Link>
                                     <div className="news-meta">
-                                        <span className="news-author"> <Link to className="text-white font-weight-bold">{item.vote_average} | {this.handleGetGenre(item.genre_ids)}</Link></span>
+                                        <span className="news-author"> <Link to className="text-white font-weight-bold">{item.vote} | {this.handleGetGenre(item.genres)}</Link></span>
                                     </div>
                                 </div>
                             </div>
@@ -91,19 +89,19 @@ class News extends Component {
 
                                 <div className="ratio_right-cover-2 image-wrapper">
                                     <Link to href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-                                        <img className="img-fluid" src={` http://image.tmdb.org/t/p/w1280//${item.poster_path}`} style={{
+                                        <img className="img-fluid" src={`${item.poster}`} style={{
                                             background: `linear-gradient(
                 rgba(0, 0, 0, 0.6),
                 rgba(0, 0, 0, 0.6)
-              ) center center no-repeat, #fff url(https://image.tmdb.org/t/p/w1280/${item.poster_path}) center top no-repeat`, backgroundSize: 'cover, cover'
+              ) center center no-repeat, #fff url(${item.poster}) center top no-repeat`, backgroundSize: 'cover, cover'
                                         }} />
                                     </Link>
                                 </div>
                                 <div className="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                    <Link to className="p-1 badge badge-primary rounded-0" href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">{this.handleGetGenre(item.genre_ids)}</Link>
+                                    <Link to className="p-1 badge badge-primary rounded-0" href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">{this.handleGetGenre(item.genres)}</Link>
 
                                     <Link to href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">
-                                        <h2 className="h5 text-white my-1">{item.overview.length > 20 ? `${item.overview.substring(0, 20)}` + '...' : item.overview}</h2>
+                                        {/* <h2 className="h5 text-white my-1">{item.overview.length > 20 ? `${item.overview.substring(0, 20)}` + '...' : item.overview}</h2> */}
                                     </Link>
                                 </div>
                             </div>

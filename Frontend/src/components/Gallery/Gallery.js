@@ -222,7 +222,7 @@ const mapStateToProps = state => {
     return {
         genres: state.getGenres.result.genres,
         upcoming: state.getUpcoming.result.results,
-        nowPlaying: state.getNowPlaying.result.results,
+        nowPlaying: state.getNowPlaying.result.data,
 
     }
 }

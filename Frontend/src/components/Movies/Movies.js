@@ -13,33 +13,34 @@ class Movies extends Component {
         return this.props.items && this.props.items.map((item, index) => {
             return (
                 <div className="main-content-container-item">
-                    <Link to={`/details/movie/${item.id}`}><img alt='image error' src={` http://image.tmdb.org/t/p/w185//${item.poster_path}`} style={{ width: "127px", height: "190px" }} /> </Link>
-                    <h3 className="main-content-container-item__item-title">{item.original_title}</h3>
-                    <p className="main-content-container-item__genres">{this.handleGenres(item.genre_ids)}</p>
-                    <p className="main-content-container-item__rating">{star} {item.vote_average} </p>
+                    <Link to={`/details/movie/${item.id}`}><img alt='image error' src={`${item.poster}`} style={{ width: "127px", height: "190px" }} /> </Link>
+                    <h3 className="main-content-container-item__item-title">{item.title}</h3>
+                    <p className="main-content-container-item__genres">{this.handleGenres(item.genres)}</p>
+                    <p className="main-content-container-item__rating">{star} {item.vote} </p>
                 </div>
             )
         })
     }
-    handleGenres = ids => {
+    handleGenres = genres => {
         // Ids nhận vào là 1 mảng có nhiều id
-        let genres = { ...this.props.genres }
-        let arrGenres = Object.values(genres);
-        let arrOutput = [];
-        ids.map((id) => {
-            let found = arrGenres.filter(x => x.id === id)
-            found.forEach(element => {
-                arrOutput.push(element)
-            });
-        })
+        // let genres = { ...this.props.genres }
+        // let arrGenres = Object.values(genres);
+        // let arrOutput = [];
+        // ids.map((id) => {
+        //     let found = arrGenres.filter(x => x.id === id)
+        //     found.forEach(element => {
+        //         arrOutput.push(element)
+        //     });
+        // })
         
-        return arrOutput.map((category, i) => {
-            return (
-                <div key={i}>
-                    {category.name}
-                </div>
-            )
-        })
+        // return arrOutput.map((category, i) => {
+        //     return (
+        //         <div key={i}>
+        //             {category.name}
+        //         </div>
+        //     )
+        // })
+        return genres
         
     }
     render() {

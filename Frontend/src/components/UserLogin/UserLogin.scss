@@ -51,7 +51,7 @@
         display: block;
         font-size: 1.2rem;
         font-weight: bold;
-        margin: 5rem auto;
+        margin: 1rem auto;
         outline: none;
         padding: 1rem;
         transition: background-color .2s, color .2s, border-color .2s;
@@ -68,8 +68,8 @@
 
       // user-log-in-container-content-warning
       &__warning {
-        color: rgba(0,0,0,.7);
-        margin-top: -2rem;
+        color: rgba(0, 0, 0, .7);
+        margin-top: 2rem;
         text-align: center;
       }
 
@@ -85,8 +85,7 @@
 
   // user-log-in-container-side-image
   &-side-image {
-    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)) no-repeat center center
-                ,$secondary-color url('images/side-image.jpeg') no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)) no-repeat center center, $secondary-color url('images/side-image.jpeg') no-repeat center center;
     background-size: cover;
     border-left: 10px solid $secondary-color;
     display: none;
@@ -98,8 +97,8 @@
       margin: 37vh auto 0;
       text-align: center;
       text-shadow: 1px 1px $secondary-color,
-      2px 2px $secondary-color,
-      3px 3px $secondary-color;
+        2px 2px $secondary-color,
+        3px 3px $secondary-color;
       transition: all 0.12s ease-out;
       width: 80%;
       text-transform: uppercase;
@@ -109,11 +108,11 @@
         left: 0px;
         position: relative;
         text-shadow: 1px 1px $secondary-color,
-                      2px 2px $secondary-color,
-                      3px 3px $secondary-color,
-                      4px 4px $secondary-color,
-                      5px 5px $secondary-color,
-                      6px 6px $secondary-color;
+          2px 2px $secondary-color,
+          3px 3px $secondary-color,
+          4px 4px $secondary-color,
+          5px 5px $secondary-color,
+          6px 6px $secondary-color;
         top: 0px;
       }
     }

@@ -11,10 +11,14 @@ class UserLogin extends Component {
     this.state = {
       isLogin: this.props.logInStatus,
       photo: null,
-      displayName: null
+      displayName: null,
+      username: '',
+      password: '',
+      isIncorrect: false,
+      loginState: true
     }
   }
- 
+
 
   // authenticate = provider => {
   //   const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -24,7 +28,7 @@ class UserLogin extends Component {
   //     .then(this.authHandler);
   // };
 
-  
+
   // componentDidMount() {
   //   firebase.auth().onAuthStateChanged(user => {
   //     if (user) {
@@ -32,7 +36,7 @@ class UserLogin extends Component {
   //     }
   //   });
   // }
-  authHandler = async authData => {                                                              
+  authHandler = async authData => {
     const user = await authData.user;
     if (user !== null) {
       localStorage.setItem('displayName', user.displayName)
@@ -55,16 +59,59 @@ class UserLogin extends Component {
       this.props.history.push({ pathname: '/profile', state: { isLogin: this.state.isLogin, photo: this.state.photo, displayName: this.state.displayName } })
     }
   };
-// click login has data default
+
+  handleOnChangeUN = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+  handleOnChangePW = (event) => {
+    this.setState({
+      password: event.target.value
+    })
+  }
+  //Chuyen sang Log In
+  handleLogIn = () => {
+    this.setState({
+      loginState: true,
+    })
+  }
+  //Chuyen sang Sign Up
+  handleSignUp = () => {
+    this.setState({
+      loginState: false,
+      isIncorrect: false
+    })
+  }
+
+  //username = password = guest thi moi vao duoc nhe
+  checkAccount = (username, password) => {
+    if (username == "guest" && password == "guest") {
+      return true;
+    }
+    return false;
+  }
+
+  // click login has data default
   clickLogin = () => {
+    this.handleLogIn();
     localStorage.setItem('displayName', 'Guest')
     localStorage.setItem('photo', 'https://firebasestorage.googleapis.com/v0/b/filmcloud-1.appspot.com/o/avt.png?alt=media&token=8b8b5b0f-8b5f-4b1f-9b1f-8b5f4b1f9b1f')
     localStorage.setItem('uid', 'guest')
-    this.setState({
-      isLogin: true,
-    })
+    //Dang nhap thanh cong
+    if (this.checkAccount(this.state.username, this.state.password)) {
+      this.setState({
+        isLogin: true,
+      })
+    } else if (this.state.username === '' && this.state.password === '') {
 
-    if(this.state.isLogin === true){
+    } else {
+      this.setState({
+        isIncorrect: true,
+      })
+    }
+
+    if (this.state.isLogin === true) {
       const db = firebase.firestore();
       db.settings({
         timestampsInSnapshots: true
@@ -73,11 +120,9 @@ class UserLogin extends Component {
         {}
       )
       this.props.toggleLogInStatus({ status: 'APPROVE' })
-      this.props.history.push({ pathname: '/profile', state: { isLogin: this.state.isLogin, photo: this.state.photo, displayName: this.state.displayName } }) 
+      this.props.history.push({ pathname: '/profile', state: { isLogin: this.state.isLogin, photo: this.state.photo, displayName: this.state.displayName } })
 
     }
-
-    
   }
 
 
@@ -97,9 +142,30 @@ class UserLogin extends Component {
           </header>
 
           <div className="user-log-in-container-content">
+
+            {this.state.loginState === true ?
+              <form action="facebook.com" method="post">
+                <label for="username">Username</label>
+                <input id='username' name='username' type='text' onChange={(event) => this.handleOnChangeUN(event)}></input>
+                <label for="password">Password</label>
+                <input id='password' name='password' type='text' onChange={(event) => this.handleOnChangePW(event)}></input>
+                {this.state.isIncorrect && <div>Username/password incorrect</div>}
+              </form>
+              :
+              <form>
+                <label for="username">Username</label>
+                <input id='username' name='username' type='text' onChange={(event) => this.handleOnChangeUN(event)}></input>
+                <label for="password">Password</label>
+                <input id='password' name='password' type='text' onChange={(event) => this.handleOnChangePW(event)}></input>
+                <label for="cpassword">Confirm Password</label>
+                <input id='cpassword' name='cpassword' type='text' onChange={(event) => this.handleOnChangePW(event)}></input>
+                {this.state.isIncorrect && <div>Incorrect</div>}
+              </form>
+            }
             <a href="#">
-                 {/* <button onClick={() => { this.authenticate("Facebook") }} className="user-log-in-container-content__button">Log In</button> */}
-             <button onClick={this.clickLogin} className="user-log-in-container-content__button">Log In</button>
+              {/*<button onClick={() => { this.authenticate("Facebook") }} className="user-log-in-container-content__button">Log In</button>*/}
+              <button onClick={this.clickLogin} className="user-log-in-container-content__button">Log In</button>
+              <button onClick={this.handleSignUp} className="user-log-in-container-content__button">Sign Up</button>
             </a>
           </div>
 

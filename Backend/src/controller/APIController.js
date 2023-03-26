@@ -42,6 +42,15 @@ let getTrailer = async (req, res) => {
     })
 }
 
+let getSchedule = async (req, res) => {
+    let userId = req.params.id;
+    const [rows] = await pool.execute('SELECT title, genres, release_date, poster, s.time, c.name as cinema_name, r.name_room as room_name from film f inner join showtime s on s.film_id = f.film_id inner join cinema_room r on r.room_id = s.room_id inner join cinema c on c.cinema_id = r.cinema_id where f.film_id = ? GROUP BY (s.showtime_id);', [userId]);
+    return res.status(200).json({
+        message: 'Get schedule of film with film_id = ' + userId,
+        data: rows
+    })
+}
+
 
 
 module.exports = {
@@ -50,6 +59,7 @@ module.exports = {
     getUpComing,
     getFilmPopular,
     getTopRated,
-    getTrailer
+    getTrailer,
+    getSchedule
 
 }

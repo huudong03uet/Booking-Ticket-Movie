@@ -33,6 +33,15 @@ let getTopRated = async (req, res) => {
     })
 }
 
+let getTrailer = async (req, res) => {
+    let userId = req.params.id;
+    const [rows] = await pool.execute('SELECT trailer from film where film_id = ?;', [userId]);
+    return res.status(200).json({
+        message: 'Get trailer of film with film_id = ' + userId,
+        data: rows
+    })
+}
+
 
 
 module.exports = {
@@ -40,6 +49,7 @@ module.exports = {
     getNowPlaying,
     getUpComing,
     getFilmPopular,
-    getTopRated
+    getTopRated,
+    getTrailer
 
 }

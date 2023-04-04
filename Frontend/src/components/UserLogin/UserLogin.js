@@ -9,13 +9,16 @@ class UserLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: this.props.logInStatus,
+      isLogin: false /*this.props.logInStatus*/,
       photo: null,
       displayName: null,
       username: '',
       password: '',
-      isIncorrect: false,
-      loginState: true
+      confirmPassword: '',
+      incorrectState: 0,
+      loginState: true, //true = log in, false = sign up
+      flag: false,
+      flag2: false
     }
   }
 
@@ -70,23 +73,31 @@ class UserLogin extends Component {
       password: event.target.value
     })
   }
+  handleOnChangeConfirmPW = (event) => {
+    this.setState({
+      confirmPassword: event.target.value
+    })
+  }
   //Chuyen sang Log In
   handleLogIn = () => {
     this.setState({
       loginState: true,
+      incorrectState: 0,
+      flag: false
     })
   }
   //Chuyen sang Sign Up
   handleSignUp = () => {
     this.setState({
       loginState: false,
-      isIncorrect: false
+      incorrectState: 0,
+      flag2: false
     })
   }
 
   //username = password = guest thi moi vao duoc nhe
   checkAccount = (username, password) => {
-    if (username == "guest" && password == "guest") {
+    if (username == "abc" && password == "guest") {
       return true;
     }
     return false;
@@ -95,20 +106,27 @@ class UserLogin extends Component {
   // click login has data default
   clickLogin = () => {
     this.handleLogIn();
-    localStorage.setItem('displayName', 'Guest')
+    localStorage.setItem('displayName', this.state.username)
     localStorage.setItem('photo', 'https://firebasestorage.googleapis.com/v0/b/filmcloud-1.appspot.com/o/avt.png?alt=media&token=8b8b5b0f-8b5f-4b1f-9b1f-8b5f4b1f9b1f')
     localStorage.setItem('uid', 'guest')
-    //Dang nhap thanh cong
-    if (this.checkAccount(this.state.username, this.state.password)) {
-      this.setState({
-        isLogin: true,
-      })
-    } else if (this.state.username === '' && this.state.password === '') {
-
-    } else {
-      this.setState({
-        isIncorrect: true,
-      })
+    if (this.state.flag) {
+      //Dang nhap thanh cong
+      if (this.checkAccount(this.state.username, this.state.password)) {
+        this.setState({
+          isLogin: true,
+        })
+      } //Nhap thieu thong tin
+      else if (this.state.username === '' || this.state.password === '') {
+        this.setState({
+          incorrectState: 2,
+        })
+      } //Nhap sai thong tin 
+      else {
+        this.setState({
+          incorrectState: 1,
+          password: ''
+        })
+      }
     }
 
     if (this.state.isLogin === true) {
@@ -121,11 +139,33 @@ class UserLogin extends Component {
       )
       this.props.toggleLogInStatus({ status: 'APPROVE' })
       this.props.history.push({ pathname: '/profile', state: { isLogin: this.state.isLogin, photo: this.state.photo, displayName: this.state.displayName } })
-
     }
+
+    this.setState({
+      flag: true,
+      flag2: false
+    })
   }
 
-
+  clickSignUp = () => {
+    this.handleSignUp();
+    if (this.state.flag2) {
+      if (this.state.password === '' || this.state.username === '') {
+        this.setState({
+          incorrectState: 2
+        })
+      }
+      else if (this.state.password != this.state.confirmPassword) {
+        this.setState({
+          incorrectState: 1
+        })
+      }
+    }
+    this.setState({
+      flag2: true,
+      flag: false
+    })
+  }
 
 
 
@@ -146,26 +186,28 @@ class UserLogin extends Component {
             {this.state.loginState === true ?
               <form action="facebook.com" method="post">
                 <label for="username">Username</label>
-                <input id='username' name='username' type='text' onChange={(event) => this.handleOnChangeUN(event)}></input>
+                <input className="user-log-in-container-content-input" id='username' name='username' type='text' onChange={(event) => this.handleOnChangeUN(event)}></input>
                 <label for="password">Password</label>
-                <input id='password' name='password' type='text' onChange={(event) => this.handleOnChangePW(event)}></input>
-                {this.state.isIncorrect && <div>Username/password incorrect</div>}
+                <input className="user-log-in-container-content-input" id='password' name='password' type='password' onChange={(event) => this.handleOnChangePW(event)} value={this.state.password}></input>
+                {this.state.incorrectState === 1 && <div className="user-log-in-container-content-incorrect">Username or password incorrect</div>}
+                {this.state.incorrectState === 2 && <div className="user-log-in-container-content-incorrect">Missing username or password</div>}
               </form>
               :
               <form>
                 <label for="username">Username</label>
-                <input id='username' name='username' type='text' onChange={(event) => this.handleOnChangeUN(event)}></input>
+                <input className="user-log-in-container-content-input" id='username' name='username' type='text' onChange={(event) => this.handleOnChangeUN(event)}></input>
                 <label for="password">Password</label>
-                <input id='password' name='password' type='text' onChange={(event) => this.handleOnChangePW(event)}></input>
+                <input className="user-log-in-container-content-input" id='password' name='password' type='password' onChange={(event) => this.handleOnChangePW(event)}></input>
                 <label for="cpassword">Confirm Password</label>
-                <input id='cpassword' name='cpassword' type='text' onChange={(event) => this.handleOnChangePW(event)}></input>
-                {this.state.isIncorrect && <div>Incorrect</div>}
+                <input className="user-log-in-container-content-input" id='cpassword' name='cpassword' type='password' onChange={(event) => this.handleOnChangeConfirmPW(event)}></input>
+                {this.state.incorrectState === 1 && <div className="user-log-in-container-content-incorrect">Password and Confirm password are different</div>}
+                {this.state.incorrectState === 2 && <div className="user-log-in-container-content-incorrect">Missing username or password</div>}
               </form>
             }
             <a href="#">
               {/*<button onClick={() => { this.authenticate("Facebook") }} className="user-log-in-container-content__button">Log In</button>*/}
               <button onClick={this.clickLogin} className="user-log-in-container-content__button">Log In</button>
-              <button onClick={this.handleSignUp} className="user-log-in-container-content__button">Sign Up</button>
+              <button onClick={this.clickSignUp} className="user-log-in-container-content__button">Sign Up</button>
             </a>
           </div>
 

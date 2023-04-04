@@ -41,6 +41,16 @@
     // user-log-in-container-content
     &-content {
 
+      &-input {
+        border: 1px solid $secondary-color;
+        border-color: black;
+      }
+
+      //red incorrect warning
+      &-incorrect {
+        color: red
+      }
+
       // user-log-in-container-content__button
       &__button {
         background-color: $secondary-color;
@@ -130,4 +140,8 @@
       width: auto;
     }
   }
+}
+
+.abc {
+  color: red
 }

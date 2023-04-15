@@ -3,6 +3,7 @@ import configureViewEngine from './configs/viewEngine';
 import initWebRoutes from './route/web.js';
 import connection from './configs/connectDB.js';
 import initAPIRoute from './route/api.js';
+import userRoute from './route/routeUser.js';
 
 require('dotenv').config();
 // const cors = require('cors');
@@ -26,6 +27,7 @@ configureViewEngine(app);
 //initWebRoutes(app);
 
 initAPIRoute(app);
+userRoute(app);
 
 
 app.listen(port, () => {

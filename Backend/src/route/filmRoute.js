@@ -1,5 +1,5 @@
 import express from 'express';
-import APIController from '../controller/APIController.js';
+import APIController from '../controller/filmController.js';
 let router = express.Router();
 
 const initAPIRoute = (app) => {

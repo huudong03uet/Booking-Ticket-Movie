@@ -2,7 +2,7 @@ import express from 'express';
 import configureViewEngine from './configs/viewEngine';
 import initWebRoutes from './route/web.js';
 import connection from './configs/connectDB.js';
-import initAPIRoute from './route/api.js';
+import filmRoute from './route/filmRoute.js';
 import userRoute from './route/routeUser.js';
 
 require('dotenv').config();
@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
 configureViewEngine(app);
 //initWebRoutes(app);
 
-initAPIRoute(app);
+filmRoute(app);
 userRoute(app);
 
 
